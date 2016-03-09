@@ -1,0 +1,27 @@
+.overlay {
+    background:transparent;
+    position:relative;
+    width:640px;
+    height:480px; /* your iframe height */
+    top:480px;  /* your iframe height */
+    margin-top:-480px;  /* your iframe height */
+}
+
+#map{
+    height: 100%;
+}
+
+#map-wrapper{
+    height: 95vh;
+}
+
+
+@media screen and (max-width: 600px) {
+    #map{
+        height: 85vh;
+    }
+    
+    #map-wrapper{
+        height: 100%;
+    }
+}
