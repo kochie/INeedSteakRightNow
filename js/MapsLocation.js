@@ -10,12 +10,21 @@
  * @author - Robert A. Koch
  * @date - 29/10/15
  */
+function enableScrollingWithMouseWheel(map) {
+    map.setOptions({ scrollwheel: true });
+}
+
+function disableScrollingWithMouseWheel(map) {
+    map.setOptions({ scrollwheel: false });
+}
+
+
 function initMap() {
 
     var mapParameters = {
         center: {lat: -34.397, lng: 150.644},
         zoom: 13,
-        scrollwheel: true
+        scrollwheel: false
     }; // Map Options for map
 
     var map = new google.maps.Map(document.getElementById('map'), mapParameters); // Map instance created with mapParameters
@@ -38,6 +47,22 @@ function initMap() {
     submitButton_Callback(map, geocoder, markers, directionsService, directionsDisplay);
 
     findLocationButton_Callback(map, geocoder);
+
+    google.maps.addListener(map, 'mousedown', function(){
+        enableScrollingWithMouseWheel(map)
+    });
+
+    $('body').on('mousedown', function(event) {
+        var clickedInsideMap = $(event.target).parents('#map').length > 0;
+
+        if(!clickedInsideMap) {
+            disableScrollingWithMouseWheel(map);
+        }
+    });
+
+    $(window).scroll(function() {
+        disableScrollingWithMouseWheel(map);
+    });
 }
 
 function findLocationButton_Callback(map, geocoder){

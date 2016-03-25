@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="css/creative.css" type="text/css">
     <link rel="stylesheet" href="css/maps.css" type="text/css">
 
-    <link  href="css/cropper.min.css" rel="stylesheet">
+    <link href="css/cropper.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -110,6 +111,7 @@
                             <label for="address">Enter Street Address, Location, or Town</label>
                             <input type="text" class="form-control" id="address" placeholder="Enter Address" onkeydown="if (event.keyCode == 13) {document.getElementById('submit-to-google-a').click();}">
                         </div>
+                        <div id="slider"></div>
                         <button id="find-location" type="button" class="btn btn-default btn-xl" style="border: none; padding: 0;"><a id="find-location-a" href="#start" class="btn btn-default btn-xl page-scroll">Find Location</a></button>
                         <hr>
                         <button id="submit-to-google" type="submit" class="btn btn-default btn-xl" style="border: none; padding: 0;"><a id="submit-to-google-a" href="#map" class="btn btn-default btn-xl page-scroll"  onclick="$(this).closest('form').submit()">Submit</a></button>
@@ -121,11 +123,11 @@
     </section>
 
     <div class="container-fluid no-padding">
-        <div id="map-wrapper" class="col-lg-9 no-padding">
+        <div id="map-wrapper" class="col-lg-12 no-padding" style="height: 80vh">
             <div id="map" class="col-lg-12 no-padding"></div>
         </div>
 
-        <div id="direction" class="col-lg-3 no-padding" style="height: 90%;"></div>
+        <!--<div id="direction" class="col-lg-3 no-padding" style="height: 90%;"></div>-->
     </div>
 
 
@@ -301,6 +303,15 @@
                 <h2>Try With Another Location</h2>
                 <a href="#start" class="btn btn-default btn-xl wow tada page-scroll">Start Again</a>
             </div>
+            <hr>
+            <div>
+                <h2>Created with help from</h2>
+                <div class="row" style="padding: 20px">
+                        <div class="col-md-6"><img src="img/google.png" height="80px" class="animated pulse"></div>
+                        <div class="col-md-6"><img src="img/yelp.png" height="80px" class="animated pulse"></div>
+                </div>
+
+            </div>
         </div>
     </aside>
 
@@ -357,11 +368,14 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/jquery.fittext.js"></script>
     <script src="js/wow.min.js"></script>
+    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
 
     <!-- Custom Theme JavaScript -->
 
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDUSsAoZrF_VzA6dRNb4HehJshSVk4I7hM&callback=initMap&libraries=geometry,places&region=AU">
+            src="https://maps.googleapis.com/maps/api/js?v=3.exp&callback=initMap&libraries=geometry,places&region=AU">
+        //&key=AIzaSyDUSsAoZrF_VzA6dRNb4HehJshSVk4I7hM
     </script>
 
     <script src="js/MapsLocation.js"></script>
@@ -398,6 +412,20 @@
 
     <script src="js/cropper.min.js"></script>
     <script src="js/cropping.js"></script>
+    <script>
+        $(function() {
+            $( "#slider" ).slider({
+                value:100,
+                min: 0,
+                max: 500,
+                step: 50,
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.value );
+                }
+            });
+            $( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
+        });
+    </script>
 
 
 
