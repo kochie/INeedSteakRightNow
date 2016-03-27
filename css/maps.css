@@ -15,6 +15,18 @@
     height: 95vh;
 }
 
+.bg-steak {
+    background: url("../img/steakhouse.jpg") no-repeat center center;
+    color:#fff;
+    background-size:cover;
+    height: 95vh;
+}
+
+.text-middle {
+    display: flex;
+    align-items: center;
+}
+
 
 @media screen and (max-width: 600px) {
     #map{
@@ -24,4 +36,8 @@
     #map-wrapper{
         height: 100%;
     }
+}
+
+.outline{
+    text-shadow: 0 0 .4em rgba(0,0,0,.6);
 }
