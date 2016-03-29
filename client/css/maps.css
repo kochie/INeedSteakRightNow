@@ -16,11 +16,23 @@
 }
 
 .bg-steak {
-    background: url("../img/steakhouse.jpg") no-repeat center center;
-    color:#fff;
+    background: url("../img/steakhouse-60.jpg") no-repeat center center;
+    color:#ffffff;
     background-size:cover;
     height: 95vh;
+    position: relative;
 }
+
+/*.bg-steak:before {*/
+    /*background: black;*/
+    /*width: 100vw;*/
+/*}*/
+
+/*.bg-steak > .container {*/
+    /*position: relative;*/
+    /*z-index: 3;*/
+/*}*/
+
 
 .text-middle {
     display: flex;
@@ -39,5 +51,5 @@
 }
 
 .outline{
-    text-shadow: 0 0 .4em rgba(0,0,0,.6);
+    text-shadow: 0 0 .5em rgba(0,0,0,.6);
 }
